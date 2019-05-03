@@ -10,10 +10,10 @@ public class BeforeMethodAdviceAdapter implements AdviceAdapter{
     private BeforeMethodAdviceAdapter() {
     }
 
-    private static final BeforeMethodAdviceAdapter INSTANTS = new BeforeMethodAdviceAdapter();
+    private static final BeforeMethodAdviceAdapter INSTANCE = new BeforeMethodAdviceAdapter();
 
-    public static BeforeMethodAdviceAdapter getInstants(){
-        return INSTANTS;
+    public static BeforeMethodAdviceAdapter getInstance(){
+        return INSTANCE;
     }
 
     @Override

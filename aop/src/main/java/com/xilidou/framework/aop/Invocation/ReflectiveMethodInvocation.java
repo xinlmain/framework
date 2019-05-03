@@ -6,9 +6,9 @@ import com.xilidou.framework.aop.utils.ReflectionUtils;
 import java.lang.reflect.Method;
 import java.util.List;
 
-public class ReflectioveMethodeInvocation implements ProxyMethodInvocation {
+public class ReflectiveMethodInvocation implements ProxyMethodInvocation {
 
-    public ReflectioveMethodeInvocation(Object proxy, Object target, Method method, Object[] arguments, List<AopMethodInterceptor> interceptorList) {
+    public ReflectiveMethodInvocation(Object proxy, Object target, Method method, Object[] arguments, List<AopMethodInterceptor> interceptorList) {
         this.proxy = proxy;
         this.target = target;
         this.method = method;

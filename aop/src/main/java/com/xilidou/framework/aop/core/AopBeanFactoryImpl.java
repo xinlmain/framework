@@ -31,6 +31,9 @@ public class AopBeanFactoryImpl extends BeanFactoryImpl{
         if(aopBeanDefinitionMap.containsKey(name)){
             AopBeanDefinition aopBeanDefinition = aopBeanDefinitionMap.get(name);
             AdvisedSupport advisedSupport = getAdvisedSupport(aopBeanDefinition);
+
+            // 其实核心就在这里：Proxy也是一个bean，只是在创建它时，会给目标bean安装callback，从而实现
+            // 目标方法执行的拦截。
             aopBean = new CglibAopProxy(advisedSupport).getProxy();
             aopBeanMap.put(name,aopBean);
             return aopBean;
@@ -56,12 +59,12 @@ public class AopBeanFactoryImpl extends BeanFactoryImpl{
                 advisor.setAdvice(advice);
 
                 if(advice instanceof BeforeMethodAdvice){
-                    AopMethodInterceptor interceptor = BeforeMethodAdviceAdapter.getInstants().getInterceptor(advisor);
+                    AopMethodInterceptor interceptor = BeforeMethodAdviceAdapter.getInstance().getInterceptor(advisor);
                     advisedSupport.addAopMethodInterceptor(interceptor);
                 }
 
                 if(advice instanceof AfterRunningAdvice){
-                    AopMethodInterceptor interceptor = AfterRunningAdviceAdapter.getInstants().getInterceptor(advisor);
+                    AopMethodInterceptor interceptor = AfterRunningAdviceAdapter.getInstance().getInterceptor(advisor);
                     advisedSupport.addAopMethodInterceptor(interceptor);
                 }
 

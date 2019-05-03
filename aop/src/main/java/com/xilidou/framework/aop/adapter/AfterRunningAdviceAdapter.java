@@ -11,10 +11,10 @@ public class AfterRunningAdviceAdapter implements AdviceAdapter{
 
     }
 
-    private static final AfterRunningAdviceAdapter INSTANTS = new AfterRunningAdviceAdapter();
+    private static final AfterRunningAdviceAdapter INSTANCE = new AfterRunningAdviceAdapter();
 
-    public static AfterRunningAdviceAdapter getInstants(){
-        return INSTANTS;
+    public static AfterRunningAdviceAdapter getInstance(){
+        return INSTANCE;
     }
 
     @Override
